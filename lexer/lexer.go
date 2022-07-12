@@ -28,7 +28,7 @@ func (l *Lexer) readChar() {
 	l.readPosition += 1
 }
 
-// return current token and step forward
+// Return current token and step forward
 func (l *Lexer) NextToken() token.Token {
 	var tok token.Token
 
