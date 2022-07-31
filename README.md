@@ -15,6 +15,10 @@ AST is the data structure that represents the source code.
 While reading, parser checks if the token sequense is valid.
 If the current token or the next token is the same as the expected token, then the parser can step forward.
 
+### expression
+parsing expression is difficult because expression has priority.
+
+### Pratt syntax parser
 ### Points of Parser
 -  If an infinite loop occurs, it may be because next() is not called
 
