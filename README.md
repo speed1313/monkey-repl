@@ -23,4 +23,11 @@ parsing expression is difficult because expression has priority.
 -  If an infinite loop occurs, it may be because next() is not called
 
 - the important point is that the parser is able to step forward if the current token or the next token is valid. To check this, expect(), that check if the next token is expected and step forward is used.
--
+
+
+## Evaluator
+parserから生成されたASTを, 上から再帰的に評価していく. eval(node)は評価した値を返し, 親nodeは子ノードの評価値を用いて新たに値を計算して返す.
+
+### 束縛と環境
+letによる変数への値の束縛は, 環境によって実現される. 環境は変数名と値をmapのラッパーで保存するもの.
+
