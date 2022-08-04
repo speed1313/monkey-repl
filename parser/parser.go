@@ -63,7 +63,6 @@ func New(l *lexer.Lexer) *Parser {
 	p.registerPrefix(token.IF, p.parseIfExpression)
 	p.registerPrefix(token.FUNCTION, p.parseFunctionLiteral)
 
-
 	p.infixParseFns = make(map[token.TokenType]infixParseFn)
 	p.registerInfix(token.PLUS, p.parseInfixExpression)
 	p.registerInfix(token.MINUS, p.parseInfixExpression)
@@ -80,13 +79,13 @@ func New(l *lexer.Lexer) *Parser {
 	p.nextToken()
 	return p
 }
-func (p *Parser)parseCallExpression(function ast.Expression) ast.Expression{
+func (p *Parser) parseCallExpression(function ast.Expression) ast.Expression {
 	exp := &ast.CallExpression{Token: p.curToken, Function: function}
 	exp.Arguments = p.parseExpressionList(token.RPAREN)
 	return exp
 }
 
-func (p *Parser) parseExpressionList(end token.TokenType) []ast.Expression{
+func (p *Parser) parseExpressionList(end token.TokenType) []ast.Expression {
 	list := []ast.Expression{}
 	if p.peekTokenIs(end) {
 		p.nextToken()
@@ -105,7 +104,7 @@ func (p *Parser) parseExpressionList(end token.TokenType) []ast.Expression{
 	return list
 }
 
-func (p *Parser) parseFunctionLiteral() ast.Expression{
+func (p *Parser) parseFunctionLiteral() ast.Expression {
 	lit := &ast.FunctionLiteral{Token: p.curToken}
 	if !p.expectPeek(token.LPAREN) {
 		return nil
@@ -117,7 +116,7 @@ func (p *Parser) parseFunctionLiteral() ast.Expression{
 	lit.Body = p.parseBlockStatement()
 	return lit
 }
-func (p *Parser) parseFunctionParameters() []*ast.Identifier{
+func (p *Parser) parseFunctionParameters() []*ast.Identifier {
 	identifiers := []*ast.Identifier{}
 	if p.peekTokenIs(token.RPAREN) {
 		p.nextToken()
@@ -137,7 +136,7 @@ func (p *Parser) parseFunctionParameters() []*ast.Identifier{
 	}
 	return identifiers
 }
-func (p *Parser) parseIfExpression()ast.Expression{
+func (p *Parser) parseIfExpression() ast.Expression {
 	exp := &ast.IfExpression{Token: p.curToken}
 	if !p.expectPeek(token.LPAREN) {
 		return nil

@@ -8,8 +8,6 @@ import (
 	"github.com/speed1313/monkey-repl/lexer"
 )
 
-
-
 func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
 	if s.TokenLiteral() != "let" {
 		t.Errorf("s.TokenLiteral not 'let'. got=%q", s.TokenLiteral())
@@ -375,7 +373,7 @@ func testBooleanLiteral(t *testing.T, exp ast.Expression, value bool) bool {
 	return true
 }
 
-func TestIfExpression(t *testing.T){
+func TestIfExpression(t *testing.T) {
 	input := "if (x < y) { x }"
 	l := lexer.New(input)
 	p := New(l)
@@ -411,7 +409,7 @@ func TestIfExpression(t *testing.T){
 
 }
 
-func TestIfElseExpression(t *testing.T){
+func TestIfElseExpression(t *testing.T) {
 	input := "if (x < y) { x } else { y }"
 	l := lexer.New(input)
 	p := New(l)
@@ -488,7 +486,7 @@ func TestFunctionLiteralParsing(t *testing.T) {
 
 func TestFunctionParameterParsing(t *testing.T) {
 	tests := []struct {
-		input string
+		input          string
 		expectedParams []string
 	}{
 		{input: "fn() {};", expectedParams: []string{}},
@@ -511,7 +509,7 @@ func TestFunctionParameterParsing(t *testing.T) {
 	}
 }
 
-func TestCallExpressionParsing(t *testing.T){
+func TestCallExpressionParsing(t *testing.T) {
 	input := "add(1, 2 * 3, 4 + 5);"
 	l := lexer.New(input)
 	p := New(l)
@@ -538,11 +536,11 @@ func TestCallExpressionParsing(t *testing.T){
 	testInfixExpression(t, exp.Arguments[1], 2, "*", 3)
 	testInfixExpression(t, exp.Arguments[2], 4, "+", 5)
 }
-func TestLetStatements(t *testing.T){
-	tests := []struct{
-		input string
+func TestLetStatements(t *testing.T) {
+	tests := []struct {
+		input              string
 		expectedIdentifier string
-		expectedValue interface{}
+		expectedValue      interface{}
 	}{
 		{"let x = 5;", "x", 5},
 		{"let y = true;", "y", true},

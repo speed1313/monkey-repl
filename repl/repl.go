@@ -3,10 +3,10 @@ package repl
 import (
 	"bufio"
 	"fmt"
-	"github.com/speed1313/monkey-repl/lexer"
-	"github.com/speed1313/monkey-repl/parser"
 	"github.com/speed1313/monkey-repl/evaluator"
+	"github.com/speed1313/monkey-repl/lexer"
 	"github.com/speed1313/monkey-repl/object"
+	"github.com/speed1313/monkey-repl/parser"
 	"io"
 )
 
@@ -36,7 +36,6 @@ func Start(in io.Reader, out io.Writer) {
 		}
 	}
 }
-
 
 const MONKEY_FACE = `            __,__
    .--.  .-"     "-.  .--.

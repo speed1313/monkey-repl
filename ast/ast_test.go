@@ -1,11 +1,11 @@
 package ast
 
-import(
+import (
 	"github.com/speed1313/monkey-repl/token"
 	"testing"
 )
 
-func TestString(t *testing.T){
+func TestString(t *testing.T) {
 	program := &Program{
 		Statements: []Statement{
 			&LetStatement{
