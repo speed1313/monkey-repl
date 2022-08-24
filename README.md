@@ -1,5 +1,5 @@
 # monkey-repl
-monkey interpreter
+this is a toy interpreter for lerning.
 
 
 # Note
